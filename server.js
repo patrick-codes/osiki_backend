@@ -1,16 +1,18 @@
 const express = require('express');
+const router = require('./Routes/auth_router');
+const connectDatabase = require('./Config/db_config');
+const mongoose = require('mongoose');
 const app = express();
- 
-// Handling GET request
-app.get('/', (req, res) => {
-    res.send('A simple Node App is '
-        + 'running on this server')
-    res.end()
-})
- 
-// Port Number
-const PORT = process.env.PORT ||5000;
- 
-// Server Setup
-app.listen(PORT,console.log(
-  `Server started on port ${PORT}`));
+
+//Connecting to MongoDB
+connectDatabase();
+
+//Port
+const port = process.env.port || 3000;
+
+//Middleware
+app.use(express.json());
+app.use('/api',router);
+
+app.listen(port,()=>{console.log(`Server Started and running on port ${port}`);
+});
