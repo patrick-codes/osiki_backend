@@ -4,18 +4,26 @@ const userSchema = mongoose.Schema(
   {
     username: {
       type: String,
-      required: [true, "Please enter the username"],
+      trim: true,
+      required: true,
     },
 
     email: {
       type: String,
-      required: [true, "Please enter the email"],
-      unique: [true, "Email already taken"],
+      trim: true,
+      required: true,
+     /* validate: {
+        validator: (value) => {
+          const re = /^ [A-Z0-9._%+-]+@ ([A-Z0-9-]+.)+ [A-Z] {2,4}$/i;
+          return value.match(re);
+        },
+        message: "Please enter the email", 
+      },*/
     },
 
     password: {
       type: String,
-      required: [true, "Please enter the password"],
+      required: true,
     },
   },
   {
@@ -23,4 +31,4 @@ const userSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("userdetails", userSchema);
