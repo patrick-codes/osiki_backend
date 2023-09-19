@@ -5,7 +5,7 @@ const bcryptjs = require("bcryptjs");
 
 module.exports = {
   getAllUsers: asyncHandler(async (req, res) => {
-    res.sendStatus(200).json({mess:"Get All Users!!"});
+    res.status(200).json({mess:"Get All Users!!"});
   },
 ), 
 

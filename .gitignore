@@ -2,4 +2,4 @@ node_modules
 npm-debug.log
 .nyc
 .env
-db_config.js
+Config
