@@ -3,9 +3,10 @@ require("dotenv").config();
 module.exports = {
   connectDatabase: async (req, res) => {
     try {
+      //mongodb+srv://khofilyndon2018:nvQRNQcqteaKQQHy@cluster0.5igcrnx.mongodb.net/?retryWrites=true&w=majority
       var db = process.env.MONGO_URI;
       const con = await mongoose
-        .connect(`${db}`, {
+        .connect(`${process.env.MONGO_URI}`, {
           useNewUrlParser: true,
           useUnifiedTopology: true,
         })
