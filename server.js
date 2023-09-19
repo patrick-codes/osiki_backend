@@ -1,7 +1,7 @@
 const express = require('express');
 const router = require('./Routes/auth_router');
 const  {connectDatabase} = require('./Config/db_config');
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 const mongoose = require('mongoose');
 
 const app = express();
