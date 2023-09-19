@@ -1,11 +1,15 @@
 const userLogin = require("../Model/user_model");
+const asyncHandler = require("express-async-handler");
 const bcryptjs = require("bcryptjs");
+
+
 module.exports = {
-  getAllUsers: async (req, res) => {
+  getAllUsers: asyncHandler(async (req, res) => {
     res.sendStatus("Get All Users!!");
   },
+), 
 
-  login: async (req, res) => {
+  login:  async (req, res) => {
     try {
       const {email, password} = req.body;
       const user = await userLogin.findOne({email});
