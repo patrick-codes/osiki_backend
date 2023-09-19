@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 module.exports = {
   connectDatabase: async (req, res) => {
-    try {
-      //mongodb+srv://khofilyndon2018:nvQRNQcqteaKQQHy@cluster0.5igcrnx.mongodb.net/?retryWrites=true&w=majority
+    try {      
+
       var db = process.env.MONGO_URI;
       const con = await mongoose
-        .connect(`${process.env.MONGO_URI}`, {
+        .connect('mongodb+srv://khofilyndon2018:nvQRNQcqteaKQQHy@cluster0.5igcrnx.mongodb.net/?retryWrites=true&w=majority', {
           useNewUrlParser: true,
           useUnifiedTopology: true,
         })
