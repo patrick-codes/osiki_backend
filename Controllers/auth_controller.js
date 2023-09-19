@@ -14,35 +14,35 @@ module.exports = {
       const {email, password} = req.body;
       const user = await userLogin.findOne({email});
       if(!user){
-        res.sendStatus(400).json({message: "User with this email already exist!!"})
+        res.status(400).json({message: "User with this email already exist!!"})
       }
       const isMatch = await bcryptjs.compare(password);
       if(!isMatch){
-        res.sendStatus(400).json({message: "Incorrect Password"});
+        res.status(400).json({message: "Incorrect Password"});
       }
 
       const token = jwt.sign({id: user._id}, "passwordKey");
       res.json({token, ...user._doc});
 
 
-    } catch (error) {res.sendStatus(500).json({error: e.message})
+    } catch (error) {res.status(500).json({error: e.message})
       
     }
-    res.sendStatus("Get Single User");
+    res.status("Get Single User");
   },
 
   createUser: async (req, res) => {
     try {
       const { username, email, password } = req.body;
       if (!username || !email || !password) {
-        res.sendStatus(400);
+        res.status(400);
         throw new Error("All Fields Are Required");
       }
 
       const existingUser = await userLogin.findOne({ email });
       if (existingUser) {
         return res
-          .sendStatus(400)
+          .status(400)
           .json({ message: "User with same email already exist" });
       }
 
@@ -71,7 +71,7 @@ module.exports = {
       }*/
       //res.sendStatus(200).json(user);
     } catch (error) {
-      res.sendStatus(500).json({ error: e.message });
+      res.status(500).json({ error: e.message });
     }
   },
 };
