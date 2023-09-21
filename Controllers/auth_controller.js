@@ -1,6 +1,7 @@
 const userLogin = require("../Model/user_model");
 const asyncHandler = require("express-async-handler");
 const bcryptjs = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 
 module.exports = {
@@ -28,7 +29,7 @@ module.exports = {
     } catch (error) {res.status(500).json({error: e.message})
       
     }
-    res.status("Get Single User");
+
   },
 
   createUser: async (req, res) => {
