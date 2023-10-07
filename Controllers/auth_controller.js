@@ -15,7 +15,7 @@ module.exports = {
       const {email, password} = req.body;
       const user = await userLogin.findOne({email});
       if(!user){
-        res.status(400).json({message: "User with this email already exist!!"})
+        return res.status(400).json({message: "User with this email already exist!!"})
       }
       const isMatch = await bcryptjs.compare(password,user.password);
       if(!isMatch){
