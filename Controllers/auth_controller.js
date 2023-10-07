@@ -17,9 +17,9 @@ module.exports = {
       if(!user){
         res.status(400).json({message: "User with this email already exist!!"})
       }
-      const isMatch = await bcryptjs.compare(password);
+      const isMatch = await bcryptjs.compare(password,user.password);
       if(!isMatch){
-        res.status(400).json({message: "Incorrect Password"});
+       return res.status(400).json({message: "Incorrect Password"});
       }
 
       const token = jwt.sign({id: user._id}, "passwordKey");
